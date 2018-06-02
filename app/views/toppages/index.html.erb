@@ -1,5 +1,7 @@
 <% if logged_in? %>
-  <p>ログインユーザー名</p><%= current_user.name %>
+  <p>現在のログインユーザー名</p><%= current_user.name %>
+  <p>現在のログインユーザーのパート</p><%= current_user.part %>
+  <p>現在のログインユーザーの年齢</p><%= current_user.age %>
 <% else %>
 <div class="center jumbotron">
   <div class="container toppage" >
@@ -7,9 +9,13 @@
       <h1>COPYMUSICへようこそ</h1>
       <br>
       <p>コピーできるようになった曲を保存しておく楽器初心者の為のサービスです。</p>
+      <br>
       <p>同じ曲をコピーしている他のユーザーをフォローすることができます。</p>
+      <br>
       <p>フォローすることで自分の知らない音楽を発見できます。</p>
+      <br>
       <p>好きな曲をたくさんコピーして、楽しいミュージックライフを手に入れましょう！</p>
+      <br>
       <%= link_to 'はじめる', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>

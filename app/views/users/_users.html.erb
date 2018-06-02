@@ -1,0 +1,28 @@
+<% if users.any? %>
+  <ul class="media-list">
+    <% users.each do |user| %>
+      <li class="media">
+        <div class="media-left">
+          <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 150 }) %>" alt="">
+        </div>
+        
+        <div class="media-body">
+          <div>
+            <p>名前：<a><%= user.name %></a></p>
+          </div>
+          <div>
+            <div>
+            <p>年齢：<%= user.age %></p>
+          </div>
+          <div>
+            <p>パート：<%= user.part %> </p>
+          </div>
+          <div>
+            <p>コピー曲数:</p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate users %>
+<% end %>
