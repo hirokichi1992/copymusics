@@ -1,28 +1,19 @@
 <% if users.any? %>
-  <ul class="media-list">
-    <% users.each do |user| %>
-      <li class="media">
-        <div class="media-left">
-          <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 150 }) %>" alt="">
-        </div>
-        
-        <div class="media-body">
-          <div>
-            <p>名前：<a><%= user.name %></a></p>
-          </div>
-          <div>
-            <div>
-            <p>年齢：<%= user.age %></p>
-          </div>
-          <div>
-            <p>パート：<%= user.part %> </p>
-          </div>
-          <div>
-            <p>コピー曲数:</p>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <% users.each do |user| %>
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
+        <p>名前：<%= user.name %></p>
+        <p>年齢：<%= user.age %></p>
+        <p>パート：<%= user.part %></p>
+        <p><%= link_to 'View profile', user_path(user) %></p>
+      </div>
+      <div class="col-sm-8 col-md-8">
+        <p>コピー曲数:</p>
+      </div>
+    </div>
+    <%= render 'relationships/follow_button', user: user %>
+    <br>
+  <% end %>
   <%= paginate users %>
 <% end %>
