@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-4 col-md-4">
         <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
-        <p>名前：<%= user.name %></p>
+        <p>名前：<%= link_to user.name, user %></p>
         <p>年齢：<%= user.age %></p>
         <p>パート：<%= user.part %></p>
         <p><%= link_to 'View profile', user_path(user) %></p>

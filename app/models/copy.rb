@@ -1,0 +1,2 @@
+class Copy < Ownership
+end
