@@ -12,8 +12,11 @@ resources :users do
   member do
     get :followings
     get :followers
+    get :wants
+    get :copys
   end
 end
 
 resources :relationships, only: [:create, :destroy]
+resources :ownerships, only: [:create, :destroy]
 end
