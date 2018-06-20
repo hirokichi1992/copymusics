@@ -26,3 +26,8 @@ footer {
 .container .toppage{
   color: white;
 }
+
+
+.panel-body .p{
+  text-align: center;
+}

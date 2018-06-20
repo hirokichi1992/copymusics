@@ -19,4 +19,5 @@ end
 
 resources :relationships, only: [:create, :destroy]
 resources :ownerships, only: [:create, :destroy]
+resources :musics
 end

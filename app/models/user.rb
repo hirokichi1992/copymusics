@@ -45,6 +45,7 @@ class User < ApplicationRecord
     #ミュージックCopy関係
   def copy(music)
     self.copys.find_or_create_by(music_id: music.id)
+    self.unwant(music)
   end
 
   def uncopy(music)
@@ -58,7 +59,9 @@ class User < ApplicationRecord
   
   #ミュージックWant関係
   def want(music)
-    self.wants.find_or_create_by(music_id: music.id)
+    if !self.copys.find_by(music_id: music.id)
+      self.wants.find_or_create_by(music_id: music.id)
+    end
   end
 
   def unwant(music)

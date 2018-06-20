@@ -1,0 +1,23 @@
+<div class="row">
+  <% musics.each do |music| %>
+    <div class="item">
+      <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <% if music.persisted? %>
+              <p class="item-title"><%= link_to music.name, music %></p>
+            <% else %>
+              <p class="item-title"><%= music.name %></p>
+            <% end %>
+            <div class="buttons text-center">
+              <% if logged_in? %>
+              <%= render 'ownerships/copy_button', music: music %>
+              <%= render 'ownerships/want_button', music: music %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

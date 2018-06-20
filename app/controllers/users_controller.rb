@@ -36,6 +36,18 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def wants
+    @user = User.find(params[:id])
+    @wants = @user.want_musics.page(params[:page])
+    counts(@user)
+  end
+  
+  def copys
+    @user = User.find(params[:id])
+    @copys = @user.copy_musics.page(params[:page])
+    counts(@user)
+  end
+  
   private
   
   def user_params
