@@ -1,0 +1,69 @@
+<% if @artist %>
+  <% @artist_info.release_groups.each do |release_group| %>
+    <% release = release_group.releases.first %>
+    <h3><%= release.title %></h3>
+    
+    <ol>
+      <% release.tracks.each do |track| %>
+        <li>
+          <%= track.title %>
+          <br>
+          <span>
+            <!--current_userがこの曲をコピーリストまたはコピーしたいリストに登録しているかどうかを確認する為に変数music_checkに現在の曲データを一時格納する　-->
+            <% music_check = Music.find_by(recording_id: track.recording_id) %>
+            <!--current_userがこの曲をコピーリストに登録している場合　-->
+            <% if current_user.copy?(music_check) %>
+              <%= link_to "コピーリストから削除する", ownership_path(music_check, music_id: music_check.id, type: "Copy"),
+                                                      class: "btn btn-xs btn-danger",
+                                                      method: :delete %>
+            <% else %>
+              <!--current_userがこの曲をコピーリストに登録していない && この曲をコピーリストしたいリストに登録している場合　-->
+              <% if current_user.want?(music_check) %>
+                <%= link_to "コピーリストへ登録する", ownerships_path(type: "Copy",
+                                                      recording_id: track.recording_id,
+                                                      name: track.title,
+                                                      music_id: Music.count + 1,
+                                                      artist_id: @artist_info.id,
+                                                      album_id: release.id
+                                                      ),
+                                                      class: "btn btn-xs btn-default",
+                                                      method: :post %>
+                <%= link_to "コピーしたいリストから削除する", ownership_path(music_check, music_id: music_check.id, type: "Want"),
+                                                              class: "btn btn-xs btn-danger",
+                                                              method: :delete %>
+              <% else %>
+                <!--current_userがこの曲をコピーリストに登録していない && この曲をコピーリストしたいリストに登録していない場合　-->
+                <%= link_to "コピーリストへ登録する", ownerships_path(type: "Copy",
+                                                      recording_id: track.recording_id,
+                                                      name: track.title,
+                                                      music_id: Music.count + 1,
+                                                      artist_id: @artist_info.id,
+                                                      album_id: release.id
+                                                      ),
+                                                      class: "btn btn-xs btn-default",
+                                                      method: :post %>
+                <%= link_to "コピーしたいリストへ登録する", ownerships_path(type: "Want",
+                                                      recording_id: track.recording_id,
+                                                      name: track.title,
+                                                      music_id: Music.count + 1,
+                                                      artist_id: @artist_info.id,
+                                                      album_id: release.id
+                                                      ),
+                                                      class: "btn btn-xs btn-default",
+                                                      method: :post %>
+              <% end %>
+            <% end %>
+          </span>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+<% end %>
+<!--#<MusicBrainz::Track:0x007fc6559a1668 @position=1, @recording_id="3244ecd9-9d23-47af-80f7-5f7dfe71b5aa", @title="ロード・アイ・ミス・ユー", @length=222000>-->
+
+<!--musics-->
+<!--  id: 1-->
+<!--  recording_id: "3244ecd9-9d23-47af-80f7-5f7dfe71b5aa"-->
+<!--  title: "ロード・アイ・ミス・ユー"-->
+<!--  alubum_id: #これらも欲しい-->
+<!--  artist_id: #これらも欲しい-->

@@ -1,5 +1,8 @@
 class Music < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
+  validates :recording_id, presence: true, length: { maximum: 255 }
+  validates :artist_id, presence: true, length: { maximum: 255 }
+  validates :album_id, presence: true, length: { maximum: 255 }
   
   has_many :ownerships
   has_many :users, through: :ownerships

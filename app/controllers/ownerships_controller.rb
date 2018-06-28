@@ -3,16 +3,22 @@ class OwnershipsController < ApplicationController
   def create
     #viewのhidden_field_tagが'Copy'の場合、選択したミュージックをコピーリストへ登録する
     if params[:type] == 'Copy'
-      @music = Music.find(params[:music_id])
+      @music = Music.find_or_create_by(name: params[:name],
+                                   artist_id: params[:artist_id],
+                                   album_id: params[:album_id],
+                                   recording_id: params[:recording_id])
       current_user.copy(@music)
-      flash[:success] = 'ミュージックをコピーリストへ登録しました'
+      flash[:success] = "#{@music.name}をコピーリストへ登録しました"
     end
 
     #viewのhidden_field_tagが''Wantの場合、選択したミュージックをコピーしたいリストへ登録する
     if params[:type] == 'Want'
-      @music = Music.find(params[:music_id])
+      @music = Music.find_or_create_by(name: params[:name],
+                                   artist_id: params[:artist_id],
+                                   album_id: params[:album_id],
+                                   recording_id: params[:recording_id])
       current_user.want(@music)
-      flash[:success] = 'ミュージックをコピーしたいリストに登録しました'
+      flash[:success] = "#{@music.name}をコピーしたいリストに登録しました"
     end
     
     redirect_back(fallback_location: root_path)
@@ -24,14 +30,14 @@ class OwnershipsController < ApplicationController
     if params[:type] == 'Copy'
       @music = Music.find(params[:music_id])
       current_user.uncopy(@music)
-      flash[:success] = 'ミュージックをコピーリストから削除しました'
+      flash[:success] = "#{@music.name}をコピーリストから削除しました"
     end
     
     #viewのhidden_field_tagが''Wantの場合、選択したミュージックをコピーしたいリストから削除する
     if params[:type] == 'Want'
       @music = Music.find(params[:music_id])
       current_user.unwant(@music)
-      flash[:success] = 'ミュージックをコピーしたいリストから削除しました'
+      flash[:success] = "#{@music.name}をコピーしたいリストから削除しました"
     end
     
     redirect_back(fallback_location: root_path)

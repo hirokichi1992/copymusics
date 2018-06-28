@@ -1,7 +1,10 @@
 <% if logged_in? %>
-  <p>現在のログインユーザー名</p><%= current_user.name %>
-  <p>現在のログインユーザーのパート</p><%= current_user.part %>
-  <p>現在のログインユーザーの年齢</p><%= current_user.age %>
+  <div class="container toppage" >
+    <div class="text-center">
+      <%= link_to '曲を探す', new_music_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+    
+  </div>
 <% else %>
 <div class="center jumbotron">
   <div class="container toppage" >

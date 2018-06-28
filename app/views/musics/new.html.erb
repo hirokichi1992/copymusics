@@ -1,2 +1,15 @@
-<h1>Musics#new</h1>
-<p>Find me in app/views/musics/new.html.erb</p>
+<div class="search">
+  <div class="row">
+    <div class="text-center">
+      <p>アーティストを検索</p>
+      <%= form_tag(new_music_path, method: :get, class: 'form-inline') do %>
+        <div class="form-group">
+          <%= text_field_tag :artist, @artist, class: 'form-control input-lg', placeholder: "アーティスト名を入力", size: 40 %>
+        </div>
+        <%= submit_tag '検索', class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'musics/artists', artist: @artist %>

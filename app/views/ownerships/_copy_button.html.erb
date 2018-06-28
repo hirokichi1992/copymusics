@@ -6,8 +6,12 @@
   <% end %>
 <% else %>
   <%= form_tag(ownerships_path) do %>
-    <%= hidden_field_tag :music_id, music.id %>
+    <%= hidden_field_tag :music_id, Music.count + 1 %>
     <%= hidden_field_tag :type, 'Copy' %>
+    <%= hidden_field_tag :recording_id, music.recording_id %>
+    <%= hidden_field_tag :name, music.name %>
+    <%= hidden_field_tag :artist_id, music.artist_id %>
+    <%= hidden_field_tag :album_id, music.album_id %>
     <%= submit_tag 'コピーリストへ登録する', class: 'btn btn-primary' %>
   <% end %>
 <% end %>

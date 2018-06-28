@@ -5,7 +5,14 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <% if music.persisted? %>
-              <p class="item-title"><%= link_to music.name, music %></p>
+              <p class="item-title"><%= link_to music.name, music_path(
+                                                            id: music.id,
+                                                            recording_id: music.recording_id,
+                                                            name: music.name,
+                                                            artist_id: music.artist_id,
+                                                            album_id: music.album_id
+                                                                       )%>
+              </p>
             <% else %>
               <p class="item-title"><%= music.name %></p>
             <% end %>
