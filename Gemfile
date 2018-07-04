@@ -55,3 +55,5 @@ gem 'mysql2'
 gem 'kaminari'
 
 gem 'musicbrainz'
+
+gem 'pry-byebug'

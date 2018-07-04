@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20180609094911) do
   create_table "musics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "recording_id"
-    t.string   "artist_id"
-    t.string   "album_id"
+    t.string   "artist_name"
+    t.string   "album_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
