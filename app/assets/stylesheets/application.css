@@ -40,3 +40,18 @@ footer {
 .panel-body .p{
   text-align: center;
 }
+
+ul {
+  list-style: none;
+}
+
+.music_info{
+  border: inset 10px #ff0000;
+  margin: 30px 30px;
+  padding: 10px;
+  font-size: medium;
+}
+
+.music_info_li{
+  border-bottom: ridge;
+}

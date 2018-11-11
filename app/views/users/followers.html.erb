@@ -1,5 +1,5 @@
 <div class="row">
-  <aside class="col-xs-4">
+  <aside class="col-md-4 col-sm-4 col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @user.name %>（<%= @user.age %>）</h3>
@@ -15,7 +15,7 @@
     </div>
     <%= render 'relationships/follow_button', user: @user %>
   </aside>
-  <div class="col-xs-8">
+  <div class="col-md-8 col-sm-8 col-xs-12">
     <ul class="nav nav-tabs nav-justified">
       <li class="<%= 'active' if current_page?(copys_user_path(@user)) %>"><%= link_to copys_user_path(@user) do %>コピーした曲 <span class="badge"><%= @count_copys %></span><% end %></li>
       <li class="<%= 'active' if current_page?(wants_user_path(@user)) %>"><%= link_to wants_user_path(@user) do %>コピーしたい曲 <span class="badge"><%= @count_wants %></span><% end %></li>

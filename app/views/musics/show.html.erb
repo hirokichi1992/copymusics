@@ -1,6 +1,5 @@
-<h1>曲情報</h1>
-    <p>music.id:<%= @music.id %></p>
-    <p>music.name:<%= @music.name %></p>
-    <p>music.recording_id:<%= @music.recording_id %></p>
-    <p>music.artist_name:<%= @music.artist_name %></p>
-    <p>music.album_name:<%= @music.album_name %></p>
+<div class="music_info"><h1>ミュージック詳細</h1>
+    <div class="music_info_li">アーティスト名 : <%= @music.artist_name %></div>
+    <div class="music_info_li">アルバム名 : <%= @music.album_name %></div>
+    <div class="music_info_li">曲名 : <%= @music.name %></div>
+</div>
