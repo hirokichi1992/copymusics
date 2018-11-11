@@ -11,9 +11,6 @@ class MusicsController < ApplicationController
     if @artist.present?
       @artists = MusicBrainz::Artist.search(params[:artist])
     end
-    
-    rescue => e
-    flash[:danger] = '検索結果が存在しません'
   end
   
   def artist
@@ -25,7 +22,7 @@ class MusicsController < ApplicationController
     @artist = MusicBrainz::Artist.find(params[:artist_id])
     @album = MusicBrainz::ReleaseGroup.find(params[:album_id])
     @tracks = @album.releases.first.tracks
-    #binding.pry
+    #binding.pry...デバック時にここまでで処理が止まる（変数内に任意の値が正しく届いているかの確認に使う）
   end
  
   

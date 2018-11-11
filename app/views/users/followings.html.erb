@@ -10,7 +10,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">パート : <%= @user.part %></h3>
         <br>
-        <h3 class="panel-title">コピー曲数 : <%= 2 %></h3>
+        <h3 class="panel-title">コピー曲数 : <%= @user.copy_musics.count %></h3>
       </div>
     </div>
     <%= render 'relationships/follow_button', user: @user %>
