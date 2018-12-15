@@ -10,6 +10,10 @@ class MusicsController < ApplicationController
     #アーティスト名が入力されているか確認
     if @artist.present?
       @artists = MusicBrainz::Artist.search(params[:artist])
+      if @artists.count == 0
+        flash[:danger] = "検索結果が存在しません。別のキーワードで試してください。"
+        render 'new'
+      end
     end
   end
   
