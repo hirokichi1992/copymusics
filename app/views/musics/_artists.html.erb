@@ -1,6 +1,9 @@
 <% if @artists %>
   <% @artists.each do |artist| %>
-    <%= link_to artist[:name], artist_musics_path(artist_id: artist[:id], keyword: @artist) %>
-   <br><br>
+    <ul class="list-group">
+      <li class="list-group-item">
+      <%= link_to artist[:name], artist_musics_path(artist_id: artist[:id], keyword: @artist) %>
+      </li>
+    </ul>
   <% end %>
 <% end %>

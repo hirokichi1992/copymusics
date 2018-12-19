@@ -1,6 +1,7 @@
 <% @albums.each do |album| %>
-  <div class="panel-body">
+<ul class="list-group">
+  <li class="list-group-item">
     <%= link_to album.title, album_musics_path(album_id: album.id, artist_id: @artist.id, keyword: @album) %>
-  </div>
-  <br><br>
+  </li>
+</ul>
 <% end %>

@@ -1,13 +1,20 @@
 <% @tracks.each do |track| %>
-  <%= "#{track.position} : #{track.title}" %>
-  <% music = Music.find_or_initialize_by(recording_id: track.recording_id) %>
-  <% unless music.persisted? %>
-    <% music = Music.new(recording_id: track.recording_id,
-                                 name: track.title,
-                          artist_name: @artist.name,
-                           album_name: @album.title) %>
-  <% end %>
-  <%= render 'ownerships/copy_button', music: music %>
-  <%= render 'ownerships/want_button', music: music %>
-  <br>
+  <div class="row">
+    <%= "#{track.position} : #{track.title}" %>
+    <% music = Music.find_or_initialize_by(recording_id: track.recording_id) %>
+    <% unless music.persisted? %>
+      <% music = Music.new(recording_id: track.recording_id,
+                                   name: track.title,
+                            artist_name: @artist.name,
+                             album_name: @album.title) %>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= render 'ownerships/copy_button', music: music %>
+      </div>
+      <div class="col-sm-12">
+        <%= render 'ownerships/want_button', music: music %>
+      </div>
+    </div>
+  </div>
 <% end %>
