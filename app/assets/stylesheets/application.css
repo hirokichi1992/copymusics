@@ -23,6 +23,15 @@ footer {
   background: url("/images/copymusic_cover.jpg") center center no-repeat;
   background-size: cover;
 }
+.toppage-musics {
+  color: black;
+}
+
+.user {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .container {
   text-align: center;

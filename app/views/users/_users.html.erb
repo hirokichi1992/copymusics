@@ -1,9 +1,9 @@
 <% if users.any? %>
   <% users.each do |user| %>
     <div class="row">
-      <div class="col-xs-12">
-        <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
-        <p>名前：<%= link_to user.name, user %></p>
+      <div class="col-xs-12 user">
+        <img class="media-object img-rounded" src="<%= gravatar_url(user, { size: 100 }) %>" alt="">
+        <p>名前：<%= link_to user.name, copys_user_path(user) %></p>
         <p>年齢：<%= user.age %></p>
         <p>パート：<%= user.part %></p>
         <p>コピー曲数 :<%= user.copy_musics.count %></p>

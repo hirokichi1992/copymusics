@@ -3,7 +3,7 @@
     <div class="text-center">
       <%= link_to '曲を探す', new_music_path, class: 'btn btn-lg btn-primary' %>
     </div>
-    
+    <%= render 'musics', musics: @musics %>
   </div>
 <% else %>
 <div class="center jumbotron">

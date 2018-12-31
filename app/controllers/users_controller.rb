@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.page(params[:page]).per(5)
   end
 
   def new
@@ -41,26 +41,25 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings.page(params[:page])
+    @followings = @user.followings.page(params[:page]).per(5)
     counts(@user)
   end
 
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers.page(params[:page])
+    @followers = @user.followers.page(params[:page]).per(5)
     counts(@user)
   end
 
   def wants
     @user = User.find(params[:id])
-    @wants = @user.want_musics.page(params[:page])
-    @copys = @user.copy_musics.page(params[:page])
+    @wants = @user.want_musics.page(params[:page]).per(5)
     counts(@user)
   end
 
   def copys
     @user = User.find(params[:id])
-    @copys = @user.copy_musics.page(params[:page])
+    @copys = @user.copy_musics.page(params[:page]).per(5)
     counts(@user)
   end
 
